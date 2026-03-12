@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-enum RoomStatus: string
+enum RoomStateEnum: string
 {
     case Available = 'Available';
     case Booked = 'Booked';

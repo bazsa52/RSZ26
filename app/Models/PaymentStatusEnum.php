@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-enum PaymentState: string
+enum PaymentStatusEnum: string
 {
     case Pending = 'Pending';
     case Paid = 'Paid';

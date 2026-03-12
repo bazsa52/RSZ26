@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
+use Database\Factories\RoomFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Room extends Model
 {
-    /** @use HasFactory<\Database\Factories\RoomFactory> */
+    /** @use HasFactory<RoomFactory> */
     use HasFactory, HasUuids;
+
+    protected $primaryKey = 'room_id';
 
     protected $fillable = [
         'name',
@@ -25,13 +28,13 @@ class Room extends Model
         'capacity' => 'integer',
     ];
 
-    public function state(): HasOne
+    public function state(): belongsTo
     {
-        return $this->hasOne(RoomState::class);
+        return $this->belongsTo(RoomState::class, 'room_state_id');
     }
 
-    public function extraServices(): HasMany
+    public function reservations(): HasMany
     {
-        return $this->hasMany(ExtraService::class);
+        return $this->hasMany(Reservation::class, 'room_id');
     }
 }

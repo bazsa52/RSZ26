@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
+use Database\Factories\AddressFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Address extends Model
 {
-    /** @use HasFactory<\Database\Factories\AddressFactory> */
+    /** @use HasFactory<AddressFactory> */
     use HasFactory, HasUuids;
 
+    protected $primaryKey = 'user_id';
     protected $fillable = [
         'zip_code',
         'city',
@@ -19,4 +21,9 @@ class Address extends Model
         'house_number',
         'extra_info',
     ];
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class, 'address_id');
+    }
 }

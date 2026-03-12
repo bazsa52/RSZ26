@@ -20,7 +20,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreignUuid('room_state_id')->constrained('room_states')->nullOnDelete()->cascadeOnUpdate();
-            $table->foreignUuid('extra_service_uuid')->constrained('extra_services')->nullOnDelete()->cascadeOnUpdate();
         });
     }
 

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreignUuid('address_id')->constrained('addresses')->restrictOnDelete()->cascadeOnUpdate();
-            $table->foreignUuid('role_id')->constrained('roles')->restrictOnDelete()->cascadeOnUpdate();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
