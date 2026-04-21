@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use Database\Factories\RoomStateFactory;
+use Database\Factories\RoomStateLookupFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class RoomState extends Model
+class RoomStateLookup extends Model
 {
-    /** @use HasFactory<RoomStateFactory> */
+    /** @use HasFactory<RoomStateLookupFactory> */
     use HasFactory, HasUuids;
 
     protected $primaryKey = 'room_state_id';
@@ -23,8 +23,8 @@ class RoomState extends Model
         'state' => RoomStateEnum::class,
     ];
 
-    public function rooms(): HasMany
+    public function logs(): HasMany
     {
-        return $this->hasMany(Room::class, 'room_state_id');
+        return $this->hasMany(RoomStateLog::class, 'room_state_id');
     }
 }

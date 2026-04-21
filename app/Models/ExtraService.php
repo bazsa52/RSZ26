@@ -22,7 +22,7 @@ class ExtraService extends Model
     ];
 
     protected $casts = [
-        'price' => 'bigInteger',
+        'price' => 'integer',
     ];
 
     public function reservations(): BelongsToMany

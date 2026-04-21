@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Database\Factories;
 
@@ -17,7 +17,7 @@ class ReceiptFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'total' => fake()->numberBetween(100, 1000),
         ];
     }
 }

@@ -20,7 +20,7 @@ class Receipt extends Model
     ];
 
     protected $casts = [
-        'total' => 'bigInteger',
+        'total' => 'integer',
     ];
 
     public function reservation(): BelongsTo

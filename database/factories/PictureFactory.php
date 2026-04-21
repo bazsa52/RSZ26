@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ExtraService>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Picture>
  */
-class ExtraServiceFactory extends Factory
+class PictureFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,7 @@ class ExtraServiceFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'description' => fake()->text(),
-            'price' => fake()->numberBetween(100, 1000),
+            'image_path' => fake()->colorName(),
         ];
     }
 }

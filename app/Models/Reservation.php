@@ -40,6 +40,11 @@ class Reservation extends Model
 
     public function receipt(): HasOne
     {
-        return $this->hasOne(Receipt::class, 'user_id');
+        return $this->hasOne(Receipt::class, 'reservation_id');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

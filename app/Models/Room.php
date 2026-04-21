@@ -24,17 +24,27 @@ class Room extends Model
     ];
 
     protected $casts = [
-        'price_per_night' => 'bigInteger',
+        'price_per_night' => 'integer',
         'capacity' => 'integer',
     ];
 
-    public function state(): belongsTo
+    public function state(): RoomStateEnum
     {
-        return $this->belongsTo(RoomState::class, 'room_state_id');
+        return RoomStateEnum::tryFrom($this->stateLog()->latest()->first()?->state()->state);
     }
 
     public function reservations(): HasMany
     {
         return $this->hasMany(Reservation::class, 'room_id');
+    }
+
+    public function pictures(): HasMany
+    {
+        return $this->hasMany(Picture::class, 'room_id');
+    }
+
+    public function stateLog(): HasMany
+    {
+        return $this->hasMany(RoomStateLog::class, 'room_id');
     }
 }

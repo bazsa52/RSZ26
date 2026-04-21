@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('room_states', function (Blueprint $table) {
+        Schema::create('room_state_lookups', function (Blueprint $table) {
             $table->uuid('room_state_id')->primary();
             $table->string('state');
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('room_states');
+        Schema::dropIfExists('room_state_lookups');
     }
 };

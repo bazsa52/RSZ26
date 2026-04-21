@@ -16,9 +16,9 @@ return new class extends Migration
             $table->bigInteger('total', false, true);
             $table->timestamps();
 
-            $table->foreignUuid('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignUuid('reservation_id')->constrained('reservations')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignUuid('payment_status_id')->constrained('payment_statuses')->nullOnDelete()->cascadeOnUpdate();
+            $table->foreignUuid('user_id')->constrained('users', 'user_id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUuid('reservation_id')->constrained('reservations', 'reservation_id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUuid('payment_status_id')->constrained('payment_statuses', 'payment_status_id')->nullOnDelete()->cascadeOnUpdate();
         });
     }
 

@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\RoomStateEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ExtraService>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RoomState>
  */
-class ExtraServiceFactory extends Factory
+class RoomStateLookupFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +18,7 @@ class ExtraServiceFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'description' => fake()->text(),
-            'price' => fake()->numberBetween(100, 1000),
+            'state' => RoomStateEnum::Available,
         ];
     }
 }

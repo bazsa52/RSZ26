@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reservations', function (Blueprint $table) {
-            $table->uuid('reservation_id')->primary();
+        Schema::create('room_state_logs', function (Blueprint $table) {
+            $table->uuid('room_state_log_id')->primary();
+            $table->foreignUuid('room_id')->constrained('rooms', 'room_id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignUuid('room_state_id')->constrained('room_state_lookups', 'room_state_id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->dateTimeTz('start_date');
             $table->dateTimeTz('end_date');
-            $table->text('comment')->nullable();
             $table->timestamps();
-
-            $table->foreignUuid('room_id')->constrained('rooms', 'room_id')->nullOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservations');
+        Schema::dropIfExists('room_state_logs');
     }
 };

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Date;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class ReservationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'start_date' => Date::now(),
+            'end_date' => Date::now()->addDays(fake()->numberBetween(5, 12)),
+            'comment' => fake()->text(),
         ];
     }
 }

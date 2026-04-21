@@ -13,7 +13,7 @@ class Address extends Model
     /** @use HasFactory<AddressFactory> */
     use HasFactory, HasUuids;
 
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'address_id';
     protected $fillable = [
         'zip_code',
         'city',
@@ -24,6 +24,6 @@ class Address extends Model
 
     public function users(): HasMany
     {
-        return $this->hasMany(User::class, 'address_id');
+        return $this->hasMany(User::class, 'user_id');
     }
 }

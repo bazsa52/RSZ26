@@ -3,11 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\RoomStateEnum;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RoomState>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RoomStateLog>
  */
-class RoomStateFactory extends Factory
+class RoomStateLogFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +18,8 @@ class RoomStateFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'start_date' => \Date::now(),
+            'end_date' => \Date::now()->addMonths(fake()->numberBetween(5, 12)),
         ];
     }
 }
