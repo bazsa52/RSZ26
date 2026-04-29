@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\Picture;
 use App\Models\RoomStateEnum;
 use Illuminate\Http\Request;
 
@@ -34,9 +35,23 @@ class RoomController extends Controller
             'description' => 'nullable|string',
             'capacity' => 'required|integer|min:1',
             'price_per_night' => 'required|integer|min:0',
+            'images' => 'nullable|array',
+            'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
 
         $room = Room::create($validated);
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('rooms', 'public');
+
+                $room->pictures()->create([
+                    'image_path' => $path,
+                ]);
+            }
+        }
+
+        $room->load('pictures');
 
         return response()->json($room, 201);
     }
@@ -55,9 +70,23 @@ class RoomController extends Controller
             'description' => 'sometimes|nullable|string',
             'capacity' => 'sometimes|integer|min:1',
             'price_per_night' => 'sometimes|integer|min:0',
+            'images' => 'sometimes|array',
+            'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
 
         $room->update($validated);
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('rooms', 'public');
+
+                $room->pictures()->create([
+                    'image_path' => $path,
+                ]);
+            }
+        }
+
+        $room->load('pictures');
 
         return response()->json($room);
     }
