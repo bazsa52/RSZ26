@@ -20,6 +20,8 @@
     import { toUrl } from '@/lib/utils';
     import { dashboard } from '@/routes';
     import type { NavItem } from '@/types';
+    import { Inbox } from 'lucide-svelte';
+    import { bookings } from '@/routes'
 
     let {
         children,
@@ -33,6 +35,11 @@
             href: dashboard(),
             icon: LayoutGrid,
         },
+        {
+            title: 'Foglalásaim',
+            href: bookings(),
+            icon: Inbox
+        }
     ];
 
     const footerNavItems: NavItem[] = [
