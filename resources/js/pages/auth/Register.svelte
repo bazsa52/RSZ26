@@ -26,7 +26,7 @@
         {#snippet children({ errors, processing })}
             <div class="grid gap-6">
                 <div class="grid gap-2">
-                    <Label for="name">Name</Label>
+                    <Label for="name">Név</Label>
                     <Input
                         id="name"
                         type="text"
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="grid gap-2">
-                    <Label for="email">Email address</Label>
+                    <Label for="email">Email cím</Label>
                     <Input
                         id="email"
                         type="email"
@@ -49,6 +49,69 @@
                         placeholder="email@example.com"
                     />
                     <InputError message={errors.email} />
+                </div>
+
+                <div class="grid gap-2">
+                    <Label for="zip">Irányító szám</Label>
+                    <Input
+                        id="zip"
+                        type="text"
+                        required
+                        name="zip"
+                        placeholder="1123"
+                    />
+                    <InputError message={errors.zip} />
+                </div>
+
+                <div class="grid gap-2">
+                    <Label for="road">Utca</Label>
+                    <Input
+                        id="road"
+                        type="text"
+                        required
+                        name="road"
+                        placeholder="Petőfi S."
+                    />
+                    <InputError message={errors.road} />
+
+                </div>
+
+                <div class="grid gap-2">
+                    <Label for="house">Házszám</Label>
+                    <Input
+                        id="house"
+                        type="text"
+                        required
+                        name="house"
+                        placeholder="2A"
+                    />
+                    <InputError message={errors.house} />
+
+                </div>
+
+                <div class="grid gap-2">
+                    <Label for="extra">Kiegészítés</Label>
+                    <Input
+                        id="extra"
+                        type="text"
+                        name="extra"
+                        placeholder=""
+                    />
+                    <InputError message={errors.extra} />
+
+                </div>
+
+                <div class="grid gap-2">
+                    <Label for="phone_number">Telefonszám</Label>
+                    <Input
+                        id="phone"
+                        type="tel"
+                        required
+                        autocomplete=""
+                        name="phone_number"
+                        placeholder="+36 20 111-1111"
+                    />
+                    <InputError message={errors.phone} />
                 </div>
 
                 <div class="grid gap-2">

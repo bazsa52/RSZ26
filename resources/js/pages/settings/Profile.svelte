@@ -31,6 +31,7 @@
     ];
 
     const user = $derived($page.props.auth.user);
+    console.warn($page)
 </script>
 
 <AppHead title="Profile settings" />
